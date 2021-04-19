@@ -73,8 +73,39 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 		     
 		// Add markers to the map
 		//map.addMarkers(berlinMarker, dublinMarker);
-		
-		
+	
+	//----------------------------------------------
+	// Markers on map
+			
+			
+
+			double p1,p2;
+			
+			try {
+			      File myObj = new File("in.txt");
+			      Scanner myReader = new Scanner(myObj);
+			      
+			      while (myReader.hasNextLine()) {
+			    	  
+			    	  String data = myReader.nextLine();
+			    	  p1=Double.parseDouble(data); 
+			        String data2 = myReader.nextLine();
+			        p2=Double.parseDouble(data2);
+			        
+			       Location loc = new Location(p1,p2); 
+			        SimplePointMarker locmarker = new SimplePointMarker(loc);
+			        map.addMarkers(locmarker);
+			      }
+			      myReader.close();
+			    } catch (FileNotFoundException e) {
+			      System.out.println("An error occurred.");
+			      e.printStackTrace();
+			    }
+			
+	//----------------------------------------------
+	
+	
+	}	
 
 
 	public void draw() {
