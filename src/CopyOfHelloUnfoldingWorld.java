@@ -75,74 +75,7 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 		//map.addMarkers(berlinMarker, dublinMarker);
 		
 		
-//------------------------------------------------
-//Count file lines
-		
-		
-		BufferedReader counter;
-		int lines = 0;
-		try {
-			counter = new BufferedReader(new FileReader(
-					"in.txt"));
-			
-			while (counter.readLine() != null) 
-			{
-				lines++;
-			}
-			counter.close();
-		} 
-		
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.println(lines);
-		
-//----------------------------------------------	
 
-		
-
-	
-		
-		
-//----------------------------------------------
-// Markers on map
-		
-		
-
-		double p1,p2;
-		
-		try {
-		      File myObj = new File("in.txt");
-		      Scanner myReader = new Scanner(myObj);
-		      
-		      while (myReader.hasNextLine()) {
-		    	  
-		    	  String data = myReader.nextLine();
-		    	  p1=Double.parseDouble(data); 
-		        String data2 = myReader.nextLine();
-		        p2=Double.parseDouble(data2);
-		        
-		       Location loc = new Location(p1,p2); 
-		        SimplePointMarker locmarker = new SimplePointMarker(loc);
-		        map.addMarkers(locmarker);
-		      }
-		      myReader.close();
-		    } catch (FileNotFoundException e) {
-		      System.out.println("An error occurred.");
-		      e.printStackTrace();
-		    }
-		
-//----------------------------------------------
-		
-		
-		//LargeMapImageUtils image=new LargeMapImageUtils(map);
-		
-	
-		
-		
-		
-		MapUtils.createDefaultEventDispatcher(this, map);
-	}
 
 	public void draw() {
 		
