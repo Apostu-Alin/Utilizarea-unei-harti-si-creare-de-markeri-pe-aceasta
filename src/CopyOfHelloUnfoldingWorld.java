@@ -103,7 +103,29 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 			    }
 			
 	//----------------------------------------------
-	
+			//------------------------------------------------
+			//Count file lines
+
+
+			        BufferedReader counter;
+			        int lines = 0;
+			        try {
+			            counter = new BufferedReader(new FileReader(
+			                    "in.txt"));
+
+			            while (counter.readLine() != null) 
+			            {
+			                lines++;
+			            }
+			            counter.close();
+			        } 
+
+			        catch (IOException e) {
+			            e.printStackTrace();
+			        }
+			        System.out.println(lines);
+
+			//----------------------------------------------
 	
 	}	
 
