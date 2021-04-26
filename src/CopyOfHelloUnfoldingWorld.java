@@ -38,6 +38,17 @@ import de.fhpotsdam.unfolding.marker.SimplePointMarker;
 
 import java.util.Scanner; // Import the Scanner class to read text files
 
+
+import java.awt.AWTException;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.awt.Robot;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.File;
+import javax.imageio.ImageIO;
+
+
 /**
  * Hello Unfolding World.
  * 
@@ -56,7 +67,19 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 	
 	
 	public void setup() {
-		size(1200, 600, OPENGL);
+		// setting map to fullscreen
+
+        	Dimension size2= Toolkit.getDefaultToolkit().getScreenSize();
+         	// width will store the width of the screen
+       	 	int width = (int)size2.getWidth();
+
+        	// height will store the height of the screen
+        	int height = (int)size2.getHeight();
+
+
+        	size(width, height, OPENGL);
+
+        //--------------------------------------------------------
 		
 		map = new UnfoldingMap(this,new Microsoft.RoadProvider());
 		MapUtils.createDefaultEventDispatcher(this, map);
@@ -73,7 +96,70 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 		     
 		// Add markers to the map
 		//map.addMarkers(berlinMarker, dublinMarker);
+			//------------------------------------------------
+			//Count file lines
+
+
+			        BufferedReader counter;
+			        int lines = 0;
+			        try {
+			            counter = new BufferedReader(new FileReader(
+			                    "in.txt"));
+
+			            while (counter.readLine() != null) 
+			            {
+			                lines++;
+			            }
+			            counter.close();
+			        } 
+
+			        catch (IOException e) {
+			            e.printStackTrace();
+			        }
+			        System.out.println(lines);
+
+			//----------------------------------------------
+
+		
+//verify if in.txt is ok -> case text in file
 	
+        BufferedReader br2;
+        String line;
+        int lineCounter=0;
+
+        try {
+            br2 = new BufferedReader(new FileReader(
+                    "in.txt"));
+            while ((line = br2.readLine()) != null) {
+                lineCounter++;
+                if (line.matches(".[a-z].")) 
+                    { 
+                        System.out.println("Found text at line "+lineCounter);
+                    }
+
+                }
+
+            br2.close();
+        } 
+
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+//----------------------------------------------
+//verify if in.txt is ok -> case odd , must be even
+
+
+        if ((lines % 2) != 0)
+        {
+            System.out.println("odd(impar) number of lines");
+        }
+
+
+
+
+//----------------------------------------------
 	//----------------------------------------------
 	// Markers on map
 			
@@ -103,29 +189,7 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 			    }
 			
 	//----------------------------------------------
-			//------------------------------------------------
-			//Count file lines
 
-
-			        BufferedReader counter;
-			        int lines = 0;
-			        try {
-			            counter = new BufferedReader(new FileReader(
-			                    "in.txt"));
-
-			            while (counter.readLine() != null) 
-			            {
-			                lines++;
-			            }
-			            counter.close();
-			        } 
-
-			        catch (IOException e) {
-			            e.printStackTrace();
-			        }
-			        System.out.println(lines);
-
-			//----------------------------------------------
 	
 	}	
 
