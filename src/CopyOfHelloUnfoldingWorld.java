@@ -216,7 +216,7 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 		            new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
 		            BufferedImage Image = r.createScreenCapture(capture);
 		            ImageIO.write(Image, "jpg", new File(path));
-		            System.out.println("Screenshot saved");
+		            System.out.println("Screenshot saved on desktop");
 		        }
 		        catch (AWTException | IOException | InterruptedException ex) {
 		            System.out.println(ex);
