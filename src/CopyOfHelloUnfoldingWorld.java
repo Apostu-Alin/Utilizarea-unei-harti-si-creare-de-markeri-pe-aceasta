@@ -46,6 +46,7 @@ import java.awt.Robot;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.File;
+
 import javax.imageio.ImageIO;
 
 
@@ -116,7 +117,7 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 			        catch (IOException e) {
 			            e.printStackTrace();
 			        }
-			        System.out.println(lines);
+			        System.out.println("Number of lines: "+lines);
 
 			//----------------------------------------------
 
@@ -188,17 +189,56 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 			      e.printStackTrace();
 			    }
 			
-	//----------------------------------------------
+	}
 
+   // button sreenshot -----------------------------------------------------	
+			public void drawbuttons(){
+				
+				 fill(81, 166, 31);
+				    rect(15, 10, 110, 25);
+				    fill(255, 255, 255);
+				    textSize(16);
+				    text("SCREENSHOT", 19, 29);
+			}
+			
+			public void mousePressed()
+			{
+				
+				try {
+		            Thread.sleep(120);
+		            Robot r = new Robot();
+		  
+		            // It saves screenshot to desired path
+		            String path = "C://Users//Andrei//Desktop//Shot.jpg";
+		  
+		            // Used to get ScreenSize and capture image
+		            Rectangle capture = 
+		            new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+		            BufferedImage Image = r.createScreenCapture(capture);
+		            ImageIO.write(Image, "jpg", new File(path));
+		            System.out.println("Screenshot saved");
+		        }
+		        catch (AWTException | IOException | InterruptedException ex) {
+		            System.out.println(ex);
+		        }
+				
+				
+			}
+
+			
+		// --------------------------------------------------------------------	
+			
+			
+			
 	
-	}	
+		
 
 
 	public void draw() {
 		
 		//background(0);
 		map.draw();
-		
+		drawbuttons();
 		
 		
 		
