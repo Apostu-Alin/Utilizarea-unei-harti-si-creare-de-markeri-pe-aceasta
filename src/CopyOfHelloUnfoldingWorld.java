@@ -20,6 +20,8 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
@@ -37,8 +39,6 @@ import java.math.BigDecimal;
 import de.fhpotsdam.unfolding.marker.SimplePointMarker;
 
 import java.util.Scanner; // Import the Scanner class to read text files
-
-
 import java.awt.AWTException;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -46,6 +46,7 @@ import java.awt.Robot;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.File;
+
 import javax.imageio.ImageIO;
 
 /**
@@ -162,12 +163,13 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 		
 		
 //----------------------------------------------
-// Markers on map
+// creating markers
 		
 		
 
 		double p1,p2;
-		
+		int marker_i=0;
+		SimplePointMarker markerArray[]=new SimplePointMarker[100];  // array with objects
 		try {
 		      File myObj = new File("in.txt");
 		      Scanner myReader = new Scanner(myObj);
@@ -181,7 +183,10 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 		        
 		       Location loc = new Location(p1,p2); 
 		        SimplePointMarker locmarker = new SimplePointMarker(loc);
-		        map.addMarkers(locmarker);
+		        
+		        markerArray[marker_i]=locmarker;             // array with objects
+		        marker_i++;
+		       // map.addMarkers(locmarker);
 		      }
 		      myReader.close();
 		    } catch (FileNotFoundException e) {
@@ -191,11 +196,32 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 		
 //----------------------------------------------
 		
-
+// Markers on map                               //modify colors if alot of markers exists !!! (max value is 255)
+	int marker_color_changer1=255;
+	int marker_color_changer2=0;	
+	for(int i=0;i<marker_i;i++)
+	{
+		markerArray[i].setColor(color(255,0, 0, 20));
+		markerArray[i].setStrokeColor(color(marker_color_changer1,marker_color_changer2, 0)); //different colors
+		markerArray[i].setStrokeWeight(5);
+		marker_color_changer1=marker_color_changer1-75;
+		marker_color_changer2=marker_color_changer2+100;
+		map.addMarkers(markerArray[i]);
+	}
 		
 		
 		
 		
+//----------------------------------------------		
+		
+// Markers Legend
+	
+	
+		
+	
+	
+	
+//----------------------------------------------		
 		MapUtils.createDefaultEventDispatcher(this, map);
 	}
 
@@ -203,15 +229,37 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 	public void drawbuttons(){
 		
 		 fill(81, 166, 31);
-		    rect(15, 10, 110, 25);
+		    rect(15, 10, 210, 25);
 		    fill(255, 255, 255);
 		    textSize(16);
-		    text("SCREENSHOT", 19, 29);
+		    text("PRESS S FOR SCREENSHOT", 19, 29);
 	}
-	
-	public void mousePressed()
-	{
+	public void drawLegend(){
 		
+		 fill(255, 255, 255);  
+		    rect(15, 40, 250, 70);   // increase value 70 if more markers exists
+		    fill(255, 0, 0);
+		    textSize(16);
+		    text("O ", 19, 59);
+		    fill(1, 1, 1);
+		    text("- Automatica si Calculatoare",35,59);
+		    fill(175, 100, 0);
+		    text("O ", 19, 79);
+		    fill(1, 1, 1);
+		    text("- Mecanica",35,79);
+		    fill(100, 200, 0);
+		    text("O ", 19, 99);
+		    fill(1, 1, 1);
+		    text("- IEEA",35,99);
+	}
+
+	
+	
+	public void keyPressed(KeyEvent event)
+	{
+		char ch = event.getKeyChar();   //character 
+		
+		if (ch == 's' || ch =='S' ) {
 		try {
             Thread.sleep(120);
             Robot r = new Robot();
@@ -225,14 +273,17 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
             BufferedImage Image = r.createScreenCapture(capture);
             ImageIO.write(Image, "jpg", new File(path));
             System.out.println("Screenshot saved");
+           
         }
         catch (AWTException | IOException | InterruptedException ex) {
             System.out.println(ex);
         }
 		
+		}
+		
 		
 	}
-
+	
 	
 // --------------------------------------------------------------------	
 	
@@ -243,11 +294,12 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 		//background(0);
 		map.draw();
 		drawbuttons();
-		
-		
-		
+		drawLegend();
+			
 		
 	}
+		
+	
 	
 	
 	
