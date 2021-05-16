@@ -240,15 +240,15 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 		    rect(15, 40, 250, 70);   // increase value 70 if more markers exists
 		    fill(255, 0, 0);
 		    textSize(16);
-		    text("O ", 19, 59);
+		    text("@ ", 19, 59);
 		    fill(1, 1, 1);
 		    text("- Automatica si Calculatoare",35,59);
 		    fill(175, 100, 0);
-		    text("O ", 19, 79);
+		    text("@ ", 19, 79);
 		    fill(1, 1, 1);
 		    text("- Mecanica",35,79);
 		    fill(100, 200, 0);
-		    text("O ", 19, 99);
+		    text("@ ", 19, 99);
 		    fill(1, 1, 1);
 		    text("- IEEA",35,99);
 	}
