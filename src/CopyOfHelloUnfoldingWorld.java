@@ -48,16 +48,11 @@ import java.io.IOException;
 import java.io.File;
 import javax.imageio.ImageIO;
 
-
 /**
  * Hello Unfolding World.
  * 
  * Download the distribution with examples for many more examples and features.
  */
-
-
-//Comentariu de onoare
-
 
 
 public class CopyOfHelloUnfoldingWorld extends PApplet {
@@ -67,25 +62,32 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 	
 	
 	public void setup() {
+		 
 		// setting map to fullscreen
-
-        	Dimension size2= Toolkit.getDefaultToolkit().getScreenSize();
-         	// width will store the width of the screen
-       	 	int width = (int)size2.getWidth();
-
-        	// height will store the height of the screen
-        	int height = (int)size2.getHeight();
-
-
-        	size(width, height, OPENGL);
-
-        //--------------------------------------------------------
+		
+		Dimension size2= Toolkit.getDefaultToolkit().getScreenSize();
+		 // width will store the width of the screen
+        int width = (int)size2.getWidth();
+        
+        // height will store the height of the screen
+        int height = (int)size2.getHeight();
+		
+		
+		size(width, height, OPENGL);
+		
+		//--------------------------------------------------------
+		
+		
+		
+		
+		
+		
 		
 		map = new UnfoldingMap(this,new Microsoft.RoadProvider());
 		MapUtils.createDefaultEventDispatcher(this, map);
 		
 		//map.zoomAndPanTo(10, new Location(52.5f, 13.4f));
-		map.zoomAndPanTo(15, new Location(47.1615341, 27.5836142)); // Iasi
+		map.zoomAndPanTo(15, new Location(47.153916037025915, 27.593364715576172)); // Iasi
 	  
 		//Location berlinLocation = new Location(47.15417869034799,27.59602546691894);
 		
@@ -96,112 +98,158 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 		     
 		// Add markers to the map
 		//map.addMarkers(berlinMarker, dublinMarker);
-			//------------------------------------------------
-			//Count file lines
-
-
-			        BufferedReader counter;
-			        int lines = 0;
-			        try {
-			            counter = new BufferedReader(new FileReader(
-			                    "in.txt"));
-
-			            while (counter.readLine() != null) 
-			            {
-			                lines++;
-			            }
-			            counter.close();
-			        } 
-
-			        catch (IOException e) {
-			            e.printStackTrace();
-			        }
-			        System.out.println(lines);
-
-			//----------------------------------------------
-
 		
+		
+//------------------------------------------------
+//Count file lines
+		
+		
+		BufferedReader counter;
+		int lines = 0;
+		try {
+			counter = new BufferedReader(new FileReader(
+					"in.txt"));
+			
+			while (counter.readLine() != null) 
+			{
+				lines++;
+			}
+			counter.close();
+		} 
+		
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("In.txt has "+lines+" lines");
+		
+//----------------------------------------------	
 //verify if in.txt is ok -> case text in file
-	
-        BufferedReader br2;
-        String line;
-        int lineCounter=0;
-
-        try {
-            br2 = new BufferedReader(new FileReader(
-                    "in.txt"));
-            while ((line = br2.readLine()) != null) {
-                lineCounter++;
-                if (line.matches(".[a-z].")) 
-                    { 
-                        System.out.println("Found text at line "+lineCounter);
-                    }
-
-                }
-
-            br2.close();
-        } 
-
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
+		
+		BufferedReader br2;
+		String line;
+		int lineCounter=0;
+		
+		try {
+			br2 = new BufferedReader(new FileReader(
+					"in.txt"));
+			while ((line = br2.readLine()) != null) {
+				lineCounter++;
+				if (line.matches(".*[a-z].*")) 
+					{ 
+				    	System.out.println("Found text at line "+lineCounter);
+					}
+				
+				}
+			
+			br2.close();
+		} 
+		
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
 //----------------------------------------------
 //verify if in.txt is ok -> case odd , must be even
-
-
-        if ((lines % 2) != 0)
-        {
-            System.out.println("odd(impar) number of lines");
-        }
-
-
-
-
-//----------------------------------------------
-	//----------------------------------------------
-	// Markers on map
-			
-			
-
-			double p1,p2;
-			
-			try {
-			      File myObj = new File("in.txt");
-			      Scanner myReader = new Scanner(myObj);
-			      
-			      while (myReader.hasNextLine()) {
-			    	  
-			    	  String data = myReader.nextLine();
-			    	  p1=Double.parseDouble(data); 
-			        String data2 = myReader.nextLine();
-			        p2=Double.parseDouble(data2);
-			        
-			       Location loc = new Location(p1,p2); 
-			        SimplePointMarker locmarker = new SimplePointMarker(loc);
-			        map.addMarkers(locmarker);
-			      }
-			      myReader.close();
-			    } catch (FileNotFoundException e) {
-			      System.out.println("An error occurred.");
-			      e.printStackTrace();
-			    }
-			
-	//----------------------------------------------
+		
+		
+		if ((lines % 2) != 0)
+		{
+			System.out.println("odd(impar) number of lines");
+		}
 
 	
-	}	
+		
+		
+//----------------------------------------------
+// Markers on map
+		
+		
 
+		double p1,p2;
+		
+		try {
+		      File myObj = new File("in.txt");
+		      Scanner myReader = new Scanner(myObj);
+		      
+		      while (myReader.hasNextLine()) {
+		    	  
+		    	  String data = myReader.nextLine();
+		    	  p1=Double.parseDouble(data); 
+		        String data2 = myReader.nextLine();
+		        p2=Double.parseDouble(data2);
+		        
+		       Location loc = new Location(p1,p2); 
+		        SimplePointMarker locmarker = new SimplePointMarker(loc);
+		        map.addMarkers(locmarker);
+		      }
+		      myReader.close();
+		    } catch (FileNotFoundException e) {
+		      System.out.println("An error occurred.");
+		      e.printStackTrace();
+		    }
+		
+//----------------------------------------------
+		
 
+		
+		
+		
+		
+		MapUtils.createDefaultEventDispatcher(this, map);
+	}
+
+// button sreenshot -----------------------------------------------------	
+	public void drawbuttons(){
+		
+		 fill(81, 166, 31);
+		    rect(15, 10, 110, 25);
+		    fill(255, 255, 255);
+		    textSize(16);
+		    text("SCREENSHOT", 19, 29);
+	}
+	
+	public void mousePressed()
+	{
+		
+		try {
+            Thread.sleep(120);
+            Robot r = new Robot();
+  
+            // It saves screenshot to desired path
+            String path = "C://Users//Andrei//Desktop//Shot.jpg";
+  
+            // Used to get ScreenSize and capture image
+            Rectangle capture = 
+            new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+            BufferedImage Image = r.createScreenCapture(capture);
+            ImageIO.write(Image, "jpg", new File(path));
+            System.out.println("Screenshot saved");
+        }
+        catch (AWTException | IOException | InterruptedException ex) {
+            System.out.println(ex);
+        }
+		
+		
+	}
+
+	
+// --------------------------------------------------------------------	
+	
+	
+	
 	public void draw() {
 		
 		//background(0);
 		map.draw();
+		drawbuttons();
 		
 		
 		
 		
 	}
+	
+	
+	
 
 }
