@@ -53,6 +53,9 @@ import javax.imageio.ImageIO;
  * Hello Unfolding World.
  * 
  * Download the distribution with examples for many more examples and features.
+ * 
+ * Este pentru crearea hartii, configurarea ei si crearea marker-ilor
+ * 
  */
 
 
@@ -61,7 +64,12 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 	
 	UnfoldingMap map;
 	
-	
+	/**
+	 * 
+	 * Configurarea hartii
+	 * 
+	 * 
+	 */
 	public void setup() {
 		 
 		// setting map to fullscreen
@@ -226,6 +234,12 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 	}
 
 // button sreenshot -----------------------------------------------------	
+	
+	/**
+	 * 
+	 * Afisarea butoanelor
+	 * 
+	 */
 	public void drawbuttons(){
 		
 		 fill(81, 166, 31);
@@ -234,6 +248,11 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 		    textSize(16);
 		    text("PRESS S FOR SCREENSHOT", 19, 29);
 	}
+	/**
+	 * 
+	 * Afisarea legendei
+	 * 
+	 */
 	public void drawLegend(){
 		
 		 fill(255, 255, 255);  
@@ -253,7 +272,11 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 		    text("- IEEA",35,99);
 	}
 
-	
+	/**
+	 * 
+	 * Pentru screenshot si salvarea acestuia in directorul ales
+	 * 
+	 */
 	
 	public void keyPressed(KeyEvent event)
 	{
@@ -288,7 +311,11 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 // --------------------------------------------------------------------	
 	
 	
-	
+	/**
+	 * 
+	 * Functia "main"
+	 * 
+	 */
 	public void draw() {
 		
 		//background(0);
