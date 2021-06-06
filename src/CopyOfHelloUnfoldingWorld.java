@@ -53,6 +53,9 @@ import javax.imageio.ImageIO;
  * Hello Unfolding World.
  * 
  * Download the distribution with examples for many more examples and features.
+ * 
+ * Este pentru crearea hartii, configurarea ei si crearea marker-ilor
+ * 
  */
 
 
@@ -61,7 +64,12 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 	
 	UnfoldingMap map;
 	
-	
+	/**
+	 * 
+	 * Configurarea hartii
+	 * 
+	 * 
+	 */
 	public void setup() {
 		 
 		// setting map to fullscreen
@@ -88,9 +96,8 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 		MapUtils.createDefaultEventDispatcher(this, map);
 		
 		//map.zoomAndPanTo(10, new Location(52.5f, 13.4f));
-		map.zoomAndPanTo(15, new Location(47.153916037025915, 27.593364715576172)); // Iasi
-	  
-		//Location berlinLocation = new Location(47.15417869034799,27.59602546691894);
+		map.zoomAndPanTo(15, new Location(47.165119371787895, 27.58693137042947)); // Iasi
+	  	//Location berlinLocation = new Location(47.15417869034799,27.59602546691894);
 		
 		     
 		// Create point markers for locations
@@ -197,15 +204,17 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 //----------------------------------------------
 		
 // Markers on map                               //modify colors if alot of markers exists !!! (max value is 255)
-	int marker_color_changer1=255;
+	int marker_color_changer1=147;
 	int marker_color_changer2=0;	
+	int marker_color_changer3=50;
 	for(int i=0;i<marker_i;i++)
 	{
 		markerArray[i].setColor(color(255,0, 0, 20));
-		markerArray[i].setStrokeColor(color(marker_color_changer1,marker_color_changer2, 0)); //different colors
+		markerArray[i].setStrokeColor(color(marker_color_changer1,marker_color_changer2, marker_color_changer3)); //different colors
 		markerArray[i].setStrokeWeight(5);
-		marker_color_changer1=marker_color_changer1-75;
-		marker_color_changer2=marker_color_changer2+100;
+		marker_color_changer1=marker_color_changer1-30;
+		marker_color_changer2=marker_color_changer2+30;
+		marker_color_changer3=marker_color_changer3+40;
 		map.addMarkers(markerArray[i]);
 	}
 		
@@ -226,6 +235,12 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 	}
 
 // button sreenshot -----------------------------------------------------	
+	
+	/**
+	 * 
+	 * Afisarea butoanelor
+	 * 
+	 */
 	public void drawbuttons(){
 		
 		 fill(81, 166, 31);
@@ -234,26 +249,66 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 		    textSize(16);
 		    text("PRESS S FOR SCREENSHOT", 19, 29);
 	}
+	/**
+	 * 
+	 * Afisarea legendei
+	 * 
+	 */
 	public void drawLegend(){
 		
 		 fill(255, 255, 255);  
-		    rect(15, 40, 250, 70);   // increase value 70 if more markers exists
-		    fill(255, 0, 0);
+		    rect(15, 40, 280, 200);   // increase value 70 if more markers exists
+		   
+		    fill(137, 0, 50);
 		    textSize(16);
 		    text("@ ", 19, 59);
 		    fill(1, 1, 1);
 		    text("- Automatica si Calculatoare",35,59);
-		    fill(175, 100, 0);
+		    
+		    fill(117,30, 90);
 		    text("@ ", 19, 79);
 		    fill(1, 1, 1);
 		    text("- Mecanica",35,79);
-		    fill(100, 200, 0);
+		    
+		    fill(87, 60, 130);
 		    text("@ ", 19, 99);
 		    fill(1, 1, 1);
 		    text("- IEEA",35,99);
+		    
+		    fill(57, 90, 160);
+		    text("@ ", 19, 119);
+		    fill(1, 1, 1);
+		    text("- Primaria Municipiului Iasi",35,119);
+		    
+		    
+		    fill(27, 120, 200);
+		    text("@ ", 19, 139);
+		    fill(1, 1, 1);
+		    text("- Facultatea de Informatica",35,139);
+		    
+		    fill(0, 150, 240);
+		    text("@ ", 19, 159);
+		    fill(1, 1, 1);
+		    text("- Palatul Culturii",35,159);
+		    
+		    fill(0, 180, 255);
+		    text("@ ", 19, 179);
+		    fill(1, 1, 1);
+		    text("- Aeroportul International Iasi",35,179);
+		    
+		    fill(0, 210, 255);
+		    text("@ ", 19, 199);
+		    fill(1, 1, 1);
+		    text("- Iulius Mall",35,199);
+		    
 	}
 
-	
+	/**
+	 * 
+	 * Pentru screenshot si salvarea acestuia in directorul ales
+	 * @param event apasarea butonului
+	 * 
+	 */
 	
 	public void keyPressed(KeyEvent event)
 	{
@@ -288,7 +343,11 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 // --------------------------------------------------------------------	
 	
 	
-	
+	/**
+	 * 
+	 * Functia "main"
+	 * 
+	 */
 	public void draw() {
 		
 		//background(0);
