@@ -275,6 +275,7 @@ public class CopyOfHelloUnfoldingWorld extends PApplet {
 	/**
 	 * 
 	 * Pentru screenshot si salvarea acestuia in directorul ales
+	 * @param event apasarea butonului
 	 * 
 	 */
 	
